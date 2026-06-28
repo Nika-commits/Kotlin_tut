@@ -4,6 +4,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -45,6 +47,10 @@ fun OfferPage(){
         Offer("10 % Offer", "This is available for low stock products")
         Offer("50 % Offer", "Available for Employees")
         Offer("80 % Offer", "Available for Employees")
+        Offer("80 % Offer", "Available for Employees")
+        Offer("80 % Offer", "Available for Employees")
+        Offer("80 % Offer", "Available for Employees")
+
 
     }
 
@@ -56,37 +62,41 @@ fun Offer(title: String, description : String) {
         fontWeight = FontWeight.ExtraBold,
         fontSize = 16.sp
     )
-
-    Image(painter = painterResource(
-        R.drawable.background_pattern
-    ),
-        contentDescription = "background_gradients",
-        contentScale = ContentScale.FillWidth,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(180.dp)
-
-    )
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .padding(4.dp)
-            .fillMaxWidth(),
+    Box(
+        modifier = Modifier.padding(12.dp)
     ) {
-        Text(title,
-            style = style,
+        Image(
+            painter = painterResource(
+                R.drawable.background_pattern
+            ),
+            contentDescription = "background_gradients",
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .padding(12.dp),
+                .matchParentSize()
+        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
+        ) {
+            Text(
+                title,
+                style = style,
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.background)
+                    .padding(12.dp),
 
 
-        )
-        Spacer(modifier = Modifier.height(12.dp))
-        Text(description,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .padding(12.dp)
-        )
+                )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                description,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.background)
+                    .padding(12.dp)
+            )
+        }
     }
 }
