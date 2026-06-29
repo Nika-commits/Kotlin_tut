@@ -2,6 +2,7 @@ package com.example.testing
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testing.ui.theme.Alternative1
+import com.example.testing.ui.theme.Alternative2
 import com.example.testing.ui.theme.Primary
 
 data class NavPage(var name: String, var icon: ImageVector, var route: String)
@@ -43,12 +45,15 @@ object Routes {
 
 @Composable
 fun NavbarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Modifier){
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.padding(horizontal = 12.dp)) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.padding(horizontal = 12.dp)
+    ) {
         Image(
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if(selected) Alternative1 else Primary
+                if(selected) Alternative2 else Primary
             ),
             modifier = Modifier
                 .padding(bottom = 4.dp)
@@ -72,14 +77,21 @@ fun NavBar(
     selectedRoute: String = Routes.MenuPage.route,
     onChange: (String) -> Unit
 ){
-    Row(modifier = Modifier
-        .fillMaxWidth()
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
         .background(MaterialTheme.colorScheme.background)
-        .navigationBarsPadding(),
-        horizontalArrangement = Arrangement.SpaceAround
+        .padding(12.dp)
+        .navigationBarsPadding()
+        .fillMaxWidth()
     ) {
         for (page in Routes.pages){
-            NavbarItem(page, selected = selectedRoute == page.route)
+            NavbarItem(page,
+                selected = selectedRoute == page.route,
+                modifier = Modifier.clickable{
+                    onChange(page.route)
+                }
+            )
         }
     }
 }

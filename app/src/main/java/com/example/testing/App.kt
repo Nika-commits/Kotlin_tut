@@ -30,16 +30,20 @@ fun App_Preview(){
 
 @Composable
 fun App() {
-    val currentRoute = remember {
+    var currentRoute = remember {
         mutableStateOf(Routes.MenuPage.route)
     }
     Scaffold(
         topBar = {
                 AppTitle()
                  },
-        bottomBar = {NavBar(onChange = {
+        bottomBar = {
+            NavBar(onChange = {
             currentRoute.value = it
-        })}
+        },
+                selectedRoute =  currentRoute.value
+            )
+        }
     ) { padding ->
         OfferPage()
     }
