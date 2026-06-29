@@ -27,37 +27,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             TestingTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerpadding ->
-                    Column( modifier = Modifier.padding(innerpadding)) {
-                        GreetingPreview()
-
-                    }
+                        App()
                     }
                 }
             }
         }
     }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    val name= remember { mutableStateOf("") }
-    Column(modifier = Modifier
-        .padding(8.dp)
-        .background(Color.Green)
-        .padding(8.dp)
-
-    ) {
-        Text("Hi, ${name.value}")
-        TextField(value = name.value, onValueChange = {name.value = it} )
-    }
-
-}
