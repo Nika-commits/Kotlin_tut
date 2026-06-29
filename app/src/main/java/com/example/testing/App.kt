@@ -37,6 +37,16 @@ fun App() {
         topBar = {
                 AppTitle()
                  },
+        content = { padding ->
+            Box( modifier = Modifier.padding(padding)){
+            when(currentRoute.value){
+                Routes.MenuPage.route -> Text("Menu Page")
+                Routes.OffersPage.route -> OfferPage()
+                Routes.OrderPage.route -> Text("Order Page")
+                Routes.InfoPage.route -> Text("Info Page")
+            }
+            }
+        },
         bottomBar = {
             NavBar(onChange = {
             currentRoute.value = it
@@ -44,9 +54,7 @@ fun App() {
                 selectedRoute =  currentRoute.value
             )
         }
-    ) { padding ->
-        OfferPage()
-    }
+    )
     
 }
 
