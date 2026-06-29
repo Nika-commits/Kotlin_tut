@@ -1,7 +1,13 @@
 package com.example.testing
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -9,6 +15,7 @@ import androidx.compose.material.icons.filled.Discount
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -45,7 +52,7 @@ fun NavbarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Mo
             ),
             modifier = Modifier
                 .padding(bottom = 4.dp)
-                .size(24.dp)
+                .size(20.dp)
         )
 
         Text(page.name,
@@ -54,8 +61,25 @@ fun NavbarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Mo
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
+//@Composable
+//fun NavbarItem_Preview(){
+//    NavbarItem(Routes.MenuPage)
+//}
+
 @Composable
-fun NavbarItem_Preview(){
-    NavbarItem(Routes.MenuPage)
+fun NavBar(
+    selectedRoute: String = Routes.MenuPage.route,
+    onChange: (String) -> Unit
+){
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .background(MaterialTheme.colorScheme.background)
+        .navigationBarsPadding(),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        for (page in Routes.pages){
+            NavbarItem(page, selected = selectedRoute == page.route)
+        }
+    }
 }
