@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -38,6 +39,7 @@ fun MenuPage() {
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 2.dp
                 ),
+                shape = RoundedCornerShape(6.dp),
                 modifier = Modifier
                     .padding(8.dp)
 
@@ -84,7 +86,7 @@ fun ProductItem(product: Product, onAdd: (Product) -> Unit){
                 Text(product.name, fontWeight = FontWeight.Bold)
                 Text("$ ${product.price.format(2)}")
             }
-         Button(onClick = {onAdd(product)}) {
+         Button(onClick = {onAdd(product)}, shape = RoundedCornerShape(6.dp) ) {
              Text("Add")
          }
         }
