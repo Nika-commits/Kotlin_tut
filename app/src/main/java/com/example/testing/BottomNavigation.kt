@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -23,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testing.ui.theme.Alternative1
@@ -47,13 +45,14 @@ object Routes {
 fun NavbarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Modifier){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.padding(horizontal = 12.dp)
+        modifier = modifier
+            .padding(horizontal = 12.dp)
     ) {
         Image(
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if(selected) Alternative2 else Primary
+                if(selected) Alternative1 else Alternative2
             ),
             modifier = Modifier
                 .padding(bottom = 4.dp)
@@ -62,7 +61,7 @@ fun NavbarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Mo
 
         Text(page.name,
             fontSize = 12.sp,
-            color = if(selected) Alternative1 else Primary)
+            color = if(selected) Alternative1 else Alternative2)
     }
 }
 
@@ -80,7 +79,7 @@ fun NavBar(
     Row(
         horizontalArrangement = Arrangement.SpaceAround,
         modifier = Modifier
-        .background(MaterialTheme.colorScheme.background)
+        .background(MaterialTheme.colorScheme.primary)
         .padding(12.dp)
         .navigationBarsPadding()
         .fillMaxWidth()

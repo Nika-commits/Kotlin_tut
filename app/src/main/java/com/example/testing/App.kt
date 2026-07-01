@@ -30,7 +30,7 @@ fun App_Preview(){
 
 @Composable
 fun App() {
-    var currentRoute = remember {
+    val currentRoute = remember {
         mutableStateOf(Routes.MenuPage.route)
     }
     Scaffold(
