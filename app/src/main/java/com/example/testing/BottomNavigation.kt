@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.testing.ui.theme.Alternative1
 import com.example.testing.ui.theme.Alternative2
-import com.example.testing.ui.theme.Primary
 
 data class NavPage(var name: String, var icon: ImageVector, var route: String)
 

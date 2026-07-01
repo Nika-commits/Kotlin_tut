@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,6 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.testing.pages.InfoPage
+import com.example.testing.pages.OfferPage
+import com.example.testing.pages.MenuPage
+import com.example.testing.pages.OrdersPage
+
 import com.example.testing.ui.theme.TestingTheme
 
 
@@ -40,10 +44,10 @@ fun App() {
         content = { padding ->
             Box( modifier = Modifier.padding(padding)){
             when(currentRoute.value){
-                Routes.MenuPage.route -> Text("Menu Page")
+                Routes.MenuPage.route -> MenuPage()
                 Routes.OffersPage.route -> OfferPage()
-                Routes.OrderPage.route -> Text("Order Page")
-                Routes.InfoPage.route -> Text("Info Page")
+                Routes.OrderPage.route -> OrdersPage()
+                Routes.InfoPage.route -> InfoPage()
             }
             }
         },
