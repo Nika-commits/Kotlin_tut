@@ -34,7 +34,7 @@ fun MenuPage() {
     }
 
     LazyColumn {
-        items(5){
+        items(10){
             Card(
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 2.dp

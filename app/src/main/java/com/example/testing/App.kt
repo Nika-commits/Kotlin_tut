@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -68,7 +69,8 @@ fun AppTitle(){
         modifier = Modifier
             .background(MaterialTheme.colorScheme.primary)
             .fillMaxWidth()
-            .padding(16.dp)
+            .statusBarsPadding()
+            .padding(8.dp)
 
     ) {
         Image(painter = painterResource(id = R.drawable.logo), contentDescription = "Logo")
