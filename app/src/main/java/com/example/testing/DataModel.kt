@@ -9,3 +9,6 @@ class Product (var id: Int, var name: String, var price: Double, var image: Stri
 class Category(var name: String, var products: MutableList<Product>)
 
 class ItemInCart(var product: Product, var quantity: Int)
+
+class Profile(var name: String, var email: String, var age: Byte, var aboutMe: String)
+
